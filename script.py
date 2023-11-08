@@ -1,4 +1,6 @@
 # file to experiment
+import seaborn as sns
+import matplotlib.pyplot as plt
 import re
 import nltk
 import numpy as np
@@ -23,4 +25,5 @@ def text_processing(text):
 
 df["Texto"] = df["Texto"].apply(text_processing)
 
-print(df.head())
+df['Clasificacion'].value_counts().plot(kind='bar')
+
