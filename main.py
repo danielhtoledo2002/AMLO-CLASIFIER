@@ -20,7 +20,7 @@ from sklearn.manifold import TSNE
 import spacy
 import pandas as pd
 import re
-from Models import tsne, logistic_regresion
+from Models import tsne, logistic_regresion, text_procesing
 
 
 # start static  web page 
