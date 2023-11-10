@@ -37,8 +37,8 @@ st.write('### TSNE')
 with st.spinner('Loading chart'):
     st.plotly_chart(tsne.plot_tsne() )
 
-st.write("Logisic table")
-with st.spinner('Loading chart'):
+st.write("### Logisic Regresion")
+with st.spinner('Loading table'):
     st.write(logistic_regresion.logistic_regresion())
 
 
