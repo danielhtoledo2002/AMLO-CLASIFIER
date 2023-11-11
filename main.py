@@ -30,19 +30,22 @@ with st.sidebar:
                                     type=['txt'])
     
 
-st.write('# AMLO CLASIFIER')
 
+st.write('# AMLO CLASIFIER')
 st.write('### TSNE')
-left_co, cent_co,last_co = st.columns(3)
-with cent_co:
-    with st.spinner('Loading chart'):
-        st.plotly_chart(tsne.plot_tsne() )
+#left_co, cent_co,last_co = st.columns(3)
+#with cent_co:
+with st.spinner('Loading chart'):
+    st.plotly_chart(tsne.plot_tsne() )
 
 st.write("### Logisic Regresion")
 with st.spinner('Loading table'):
+    st.markdown("##### Input your text to clasify ")
+    text = st.text_input("", label_visibility='visible', placeholder='Input texto to clasify ')
+    if st.button('Enviar'):
+        proba = logistic_regresion.predict_text(text)
+        st.write(logistic_regresion.predict(proba))
     
-    st.write(logistic_regresion.logistic_regresion())
-    st.text_input("", label_visibility='visible', placeholder='Ingrese texto para clasificar ')
 
 
 

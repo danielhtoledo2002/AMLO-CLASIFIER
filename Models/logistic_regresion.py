@@ -1,4 +1,5 @@
-import text_procesing
+from Models import text_procesing
+
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.manifold import TSNE
 from sklearn.model_selection import train_test_split
@@ -22,7 +23,6 @@ def logistic_regresion():
     #return classification_report(y_test, y_pred)
 
 model = logistic_regresion()
-text = ''
 
 def predict_text(text):
     resultado = text_procesing.clean_text(text)
@@ -31,27 +31,22 @@ def predict_text(text):
     probabilida = model.predict_proba(resultado)
     return probabilida
 
-proba = predict_text(text)
+def match_category(category):
+    match category:
+        case 0: return "exterior"
+        case 1: return "economia"
+        case 2 : return "opinion"
+        case 3 : return "competencia"
+        case 4: return "apoyo"
+        case 5: return "seguridad"
 
 def predict(proba):
-    for i in range(proba):
-        if i == 0:
-            return 'exteriro'
-        elif i ==1 :
-            return 'economia'
-        elif i ==2: 
-            return 'opinion'
-
-        elif i == 3 :
-            return 'competencia'
-        elif  i == 4 :
-            return 'apoyo'
-        elif i == 5:
-            return 'seguridad'
-
-        
+    proba = list(proba[0])
+    maxx = max(proba)
+    index = proba.index(maxx)
+    return f"La probabilidad es {maxx} y lo categoriza como {match_category(index)}"
 
 
+   
 
 
-print(predict_text('En el ambito de seguridad en el estado de Sonora'))
