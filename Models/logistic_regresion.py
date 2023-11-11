@@ -1,8 +1,6 @@
 from Models import text_procesing
 import joblib
-
 from sklearn.feature_extraction.text import TfidfVectorizer
-
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.manifold import TSNE
 from sklearn.model_selection import train_test_split
@@ -10,8 +8,9 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, confusion_matrix
 
 
-model = joblib.load("Models/LogisticRegresion.joblib")
-tfidf = joblib.load("Models/tfidf_vectorizer.joblib")
+model = joblib.load("Lregresion/LogisticRegresion.joblib")
+tfidf = joblib.load("Lregresion/tfidf_vectorizer.joblib")
+
 def predict_text(text):
     resultado = text_procesing.clean_text(text)
     resultado = tfidf.transform([resultado])

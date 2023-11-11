@@ -24,5 +24,5 @@ def logistic_regresion():
 
 model = logistic_regresion()
 
-joblib.dump(model, "Models/LogisticRegresion.joblib")
-joblib.dump(tfidf, "Models/tfidf_vectorizer.joblib")
+joblib.dump(model, "Lregresion/LogisticRegresion.joblib")
+joblib.dump(tfidf, "Lregresion/tfidf_vectorizer.joblib")
