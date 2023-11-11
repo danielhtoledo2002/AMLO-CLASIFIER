@@ -22,7 +22,7 @@ import pandas as pd
 import re
 from Models import tsne, logistic_regresion, text_procesing
 
-
+st.set_page_config(layout='wide')
 # start static  web page 
 
 with st.sidebar:
@@ -33,13 +33,17 @@ with st.sidebar:
 st.write('# AMLO CLASIFIER')
 
 st.write('### TSNE')
-
-with st.spinner('Loading chart'):
-    st.plotly_chart(tsne.plot_tsne() )
+left_co, cent_co,last_co = st.columns(3)
+with cent_co:
+    with st.spinner('Loading chart'):
+        st.plotly_chart(tsne.plot_tsne() )
 
 st.write("### Logisic Regresion")
 with st.spinner('Loading table'):
+    
     st.write(logistic_regresion.logistic_regresion())
+    st.text_input("", label_visibility='visible', placeholder='Ingrese texto para clasificar ')
+
 
 
 if api_key_file is not None:
