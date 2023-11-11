@@ -18,7 +18,6 @@ def predict_text(text):
     prediccion = model.predict(resultado)
     probabilida = model.predict_proba(resultado)
     return probabilida
-a = predict_text("DInero")
 
 def match_category(category):
     match category:
@@ -38,4 +37,3 @@ def predict(proba):
 
    
 
-print(predict(a))
