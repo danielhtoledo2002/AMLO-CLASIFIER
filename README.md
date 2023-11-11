@@ -13,6 +13,13 @@ That creates a Directory and to run your python scripts you need to:
 - `pip install nltk`
 - `pip install pandas`
 - `pip install -U scikit-learn`
+- `pip install -U spacy`
+- `python -m spacy download es_core_news_lg`
+- `pip install streamlit`
+- `pip install langchain`
+- `pip install openai`
+- `pip install numpy`
+- `pip install joblib` 
 
 
 
