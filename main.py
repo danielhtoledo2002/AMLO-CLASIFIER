@@ -40,7 +40,6 @@ with st.spinner('Loading chart'):
 
 st.write("### Logisic Regresion")
 with st.spinner('Loading table'):
-    st.markdown("##### Input your text to clasify ")
     text = st.text_input("", label_visibility='visible', placeholder='Input texto to clasify ')
     if st.button('Enviar'):
         proba = logistic_regresion.predict_text(text)
