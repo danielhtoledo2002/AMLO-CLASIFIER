@@ -24,8 +24,9 @@ pipeline = Pipeline(
 
 parameters = {
     'tfidf__ngram_range': [ (1,1), (1,2),(2,2),(2,3), (3,3), (1,3), (1,4), (1,5)],
-    'clf__n_estimators': [10,50,100],
-    'clf__criterion': ['entropy']
+    'clf__n_estimators': [10,50,100, 250, 500],
+    'clf__criterion': ['entropy', 'gini', 'log_loss'],
+    'clf__random_state': [10,20,30,40,50]
 }
 
 grid = GridSearchCV(pipeline, parameters, cv=20, n_jobs=-1, verbose=3, scoring='accuracy')
