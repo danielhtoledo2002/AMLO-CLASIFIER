@@ -10,7 +10,7 @@ import joblib
 import text_procesing
 
 df  =  text_procesing.return_dataframe()
-tfidf = TfidfVectorizer(ngram_range=(1, 3))
+tfidf = TfidfVectorizer(ngram_range=(1, 5))
 
 
 X = df['Texto_limpio']
