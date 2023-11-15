@@ -9,7 +9,7 @@ import streamlit as st
 from langchain.chat_models import ChatOpenAI
 from langchain.schema.messages import HumanMessage, SystemMessage
 
-from Models import logistic_regresion, svccc, tsne, treee
+from Models import logistic_regresion, svccc, tsne, treee, random_forrr
 
 # st.set_page_config(layout='wide')
 # start static  web page
@@ -62,3 +62,15 @@ with st.spinner("Loading table"):
         if text3 != "":
             proba = treee.predict_text(text3)
             st.write(treee.predict(proba))
+st.write("### Random Forest")
+with st.spinner("Loading table"):
+    text4 = st.text_input(
+        "",
+        label_visibility="visible",
+        placeholder="Input texto to clasify ",
+        key="input4",
+    )
+    if st.button("Enviar", key="button4"):
+        if text4 != "":
+            proba = random_forrr.predict_text(text4)
+            st.write(random_forrr.predict(proba))

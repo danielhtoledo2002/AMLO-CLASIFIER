@@ -22,4 +22,7 @@ model = RandomForestClassifier(n_jobs=-1, criterion="entropy", n_estimators= 100
 model.fit(X_train_vec, y_train)
 y_pred = model.predict(X_test_vec)
 
+
 print(classification_report(y_test, y_pred))
+joblib.dump(model, "random_for/random_forr.joblib")
+joblib.dump(tfidf, "random_for/tfidf_vectorizer.joblib")
