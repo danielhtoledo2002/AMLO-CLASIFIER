@@ -9,7 +9,7 @@ import streamlit as st
 from langchain.chat_models import ChatOpenAI
 from langchain.schema.messages import HumanMessage, SystemMessage
 
-from Models import logistic_regresion, svccc, tsne
+from Models import logistic_regresion, svccc, tsne, treee
 
 # st.set_page_config(layout='wide')
 # start static  web page
@@ -47,6 +47,18 @@ with st.spinner("Loading table"):
         key="input2",
     )
     if st.button("Enviar", key="button2"):
-        if text != "":
+        if text2 != "":
             proba = svccc.predict_text(text2)
             st.write(svccc.predict(proba))
+st.write("### Desicition Trees")
+with st.spinner("Loading table"):
+    text3 = st.text_input(
+        "",
+        label_visibility="visible",
+        placeholder="Input texto to clasify ",
+        key="input3",
+    )
+    if st.button("Enviar", key="button3"):
+        if text3 != "":
+            proba = treee.predict_text(text3)
+            st.write(treee.predict(proba))
