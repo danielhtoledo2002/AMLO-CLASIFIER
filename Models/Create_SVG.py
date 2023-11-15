@@ -12,14 +12,19 @@ import text_procesing
 df  =  text_procesing.return_dataframe()
 tfidf = TfidfVectorizer(ngram_range=(1, 3))
 
+def svc_create():
+    X = df['Texto_limpio']
+    y = df['cla_num']
+    X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.85, random_state=42)
+    X_train_vec = tfidf.fit_transform(X_train)
+    X_test_vec = tfidf.transform(X_test)
+    model = SVC(kernel="linear", random_state=30, probability=True)
+    model.fit(X_train_vec, y_train)
+    y_pred = model.predict(X_test_vec)
+    return model
 
-X = df['Texto_limpio']
-y = df['cla_num']
-X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.85, random_state=42)
-X_train_vec = tfidf.fit_transform(X_train)
-X_test_vec = tfidf.transform(X_test)
-model = SVC(kernel="linear", random_state=30)
-model.fit(X_train_vec, y_train)
-y_pred = model.predict(X_test_vec)
+model = svc_create()
 
-print(classification_report(y_test, y_pred))
+joblib.dump(model, "svcc/svc_create.joblib")
+joblib.dump(tfidf, "svcc/tfidf_vectorizer.joblib")
+
