@@ -9,7 +9,7 @@ import streamlit as st
 from langchain.chat_models import ChatOpenAI
 from langchain.schema.messages import HumanMessage, SystemMessage
 
-from Models import logistic_regresion, svccc, tsne, treee, random_forrr
+from Models import logistic_regresion, random_forrr, svccc, treee, tsne
 
 # st.set_page_config(layout='wide')
 # start static  web page
@@ -17,6 +17,32 @@ from Models import logistic_regresion, svccc, tsne, treee, random_forrr
 
 with st.sidebar:
     st.write(" # Configuration")
+    selected = st.multiselect(
+        "Columns Logistic Regresion",
+        logistic_regresion.clasification_rep().columns,
+        default=["Clasificación", "Precision"],
+    )
+    first_table = logistic_regresion.clasification_rep()[selected]
+    selected = st.multiselect(
+        "Columns SVG",
+        svccc.clasification_rep().columns,
+        default=["Clasificación", "Precision"],
+    )
+    second_table = svccc.clasification_rep()[selected]
+
+    selected = st.multiselect(
+        "Columns Decision Tree",
+        treee.clasification_rep().columns,
+        default=["Clasificación", "Precision"],
+    )
+    thrird_table = treee.clasification_rep()[selected]
+    selected = st.multiselect(
+        "Columns Random Forest",
+        random_forrr.clasification_rep().columns,
+        default=["Clasificación", "Precision"],
+    )
+    fourt_table = random_forrr.clasification_rep()[selected]
+
 
 st.write("# AMLO CLASIFIER")
 st.write("### TSNE")
@@ -27,8 +53,7 @@ with st.spinner("Loading chart"):
 
 st.write("### Logisic Regresion")
 with st.spinner("Loading table"):
-    
-    st.table(logistic_regresion.clasification_rep())
+    st.dataframe(first_table, hide_index=True, use_container_width=True)
     text = st.text_input(
         "",
         label_visibility="visible",
@@ -42,8 +67,7 @@ with st.spinner("Loading table"):
 
 st.write("### SVC")
 with st.spinner("Loading table"):
-    st.table(svccc.clasification_rep())
-
+    st.dataframe(second_table, hide_index=True, use_container_width=True)
     text2 = st.text_input(
         "",
         label_visibility="visible",
@@ -54,9 +78,9 @@ with st.spinner("Loading table"):
         if text2 != "":
             proba = svccc.predict_text(text2)
             st.write(svccc.predict(proba))
-st.write("### Desicition Trees")
+st.write("### Desicion Trees")
 with st.spinner("Loading table"):
-    st.table(treee.clasification_rep())
+    st.dataframe(thrird_table, hide_index=True, use_container_width=True)
     text3 = st.text_input(
         "",
         label_visibility="visible",
@@ -69,7 +93,7 @@ with st.spinner("Loading table"):
             st.write(treee.predict(proba))
 st.write("### Random Forest")
 with st.spinner("Loading table"):
-    st.table(random_forrr.clasification_rep())
+    st.dataframe(fourt_table, hide_index=True, use_container_width=True)
     text4 = st.text_input(
         "",
         label_visibility="visible",

@@ -66,9 +66,9 @@ def predict(proba):
 
 def clasification_rep():
     print(clasification.info())
-    clasification["Unnamed: 0"] = clasification['Unnamed: 0'].astype(str)
-    
+    clasification["Unnamed: 0"] = clasification["Unnamed: 0"].astype(str)
+
     clasification["Unnamed: 0"] = clasification["Unnamed: 0"].apply(match_category)
-    a = clasification.rename(columns={"Unnamed: 0" : "Clasificación"})
+    a = clasification.rename(columns={"Unnamed: 0": "Clasificación", "precision" : "Precision"})
 
     return a
