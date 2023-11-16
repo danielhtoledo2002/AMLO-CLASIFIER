@@ -19,7 +19,8 @@ That creates a Directory and to run your python scripts you need to:
 - `pip install langchain`
 - `pip install openai`
 - `pip install numpy`
-- `pip install joblib` 
+- `pip install joblib`
+-  `pip install plotly`
 
 
 
