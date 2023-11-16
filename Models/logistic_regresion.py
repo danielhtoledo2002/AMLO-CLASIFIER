@@ -1,12 +1,12 @@
-from Models import text_procesing
 import joblib
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.manifold import TSNE
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import classification_report, confusion_matrix
 import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
+from sklearn.manifold import TSNE
+from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.model_selection import train_test_split
+
+from Models import text_procesing
 
 model = joblib.load("Lregresion/LogisticRegresion.joblib")
 tfidf = joblib.load("Lregresion/tfidf_vectorizer.joblib")
@@ -38,13 +38,27 @@ def match_category(category):
             return "seguridad"
         case _:
             return category
+def match_category2(category):
+    match category:
+        case 0:
+            return "exterior"
+        case 1:
+            return "economia"
+        case 2:
+            return "opinion"
+        case 3:
+            return "competencia"
+        case 4:
+            return "apoyo"
+        case 5:
+            return "seguridad"
 
 
 def predict(proba):
     proba = list(proba[0])
     maxx = max(proba)
     index = proba.index(maxx)
-    return f"La probabilidad es {maxx} y lo categoriza como {match_category(index)}"
+    return f"La probabilidad es {maxx} y lo categoriza como {match_category2(index)}"
 
 
 def clasification_rep():

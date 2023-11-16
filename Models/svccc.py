@@ -40,11 +40,27 @@ def match_category(category):
             return category
 
 
+def match_category2(category):
+    match category:
+        case 0:
+            return "exterior"
+        case 1:
+            return "economia"
+        case 2:
+            return "opinion"
+        case 3:
+            return "competencia"
+        case 4:
+            return "apoyo"
+        case 5:
+            return "seguridad"
+
+
 def predict(proba):
     proba = list(proba[0])
     maxx = max(proba)
     index = proba.index(maxx)
-    return f"La probabilidad es {maxx} y lo categoriza como {match_category(index)}"
+    return f"La probabilidad es {maxx} y lo categoriza como {match_category2(index)}"
 
 
 def clasification_rep():
