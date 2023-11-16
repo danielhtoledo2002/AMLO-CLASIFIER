@@ -1,14 +1,17 @@
 import joblib
+import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 
 from Models import text_procesing
+
 # import text_procesing
 
 model = joblib.load("svcc/svc_create.joblib")
 tfidf = joblib.load("svcc/tfidf_vectorizer.joblib")
+clasification = pd.read_csv("svcc/clasification.csv")
 
 
 def predict_text(text):
@@ -21,18 +24,20 @@ def predict_text(text):
 
 def match_category(category):
     match category:
-        case 0:
+        case "0":
             return "exterior"
-        case 1:
+        case "1":
             return "economia"
-        case 2:
+        case "2":
             return "opinion"
-        case 3:
+        case "3":
             return "competencia"
-        case 4:
+        case "4":
             return "apoyo"
-        case 5:
+        case "5":
             return "seguridad"
+        case _:
+            return category
 
 
 def predict(proba):
@@ -42,5 +47,11 @@ def predict(proba):
     return f"La probabilidad es {maxx} y lo categoriza como {match_category(index)}"
 
 
-a = predict(predict_text("dinero"))
-print(a)
+def clasification_rep():
+    print(clasification.info())
+    clasification["Unnamed: 0"] = clasification["Unnamed: 0"].astype(str)
+
+    clasification["Unnamed: 0"] = clasification["Unnamed: 0"].apply(match_category)
+    a = clasification.rename(columns={"Unnamed: 0": "Clasificación"})
+
+    return a

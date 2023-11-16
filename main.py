@@ -27,6 +27,8 @@ with st.spinner("Loading chart"):
 
 st.write("### Logisic Regresion")
 with st.spinner("Loading table"):
+    
+    st.table(logistic_regresion.clasification_rep())
     text = st.text_input(
         "",
         label_visibility="visible",
@@ -40,6 +42,8 @@ with st.spinner("Loading table"):
 
 st.write("### SVC")
 with st.spinner("Loading table"):
+    st.table(svccc.clasification_rep())
+
     text2 = st.text_input(
         "",
         label_visibility="visible",
@@ -52,6 +56,7 @@ with st.spinner("Loading table"):
             st.write(svccc.predict(proba))
 st.write("### Desicition Trees")
 with st.spinner("Loading table"):
+    st.table(treee.clasification_rep())
     text3 = st.text_input(
         "",
         label_visibility="visible",
@@ -64,6 +69,7 @@ with st.spinner("Loading table"):
             st.write(treee.predict(proba))
 st.write("### Random Forest")
 with st.spinner("Loading table"):
+    st.table(random_forrr.clasification_rep())
     text4 = st.text_input(
         "",
         label_visibility="visible",

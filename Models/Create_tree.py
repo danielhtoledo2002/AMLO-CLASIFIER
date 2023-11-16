@@ -20,7 +20,10 @@ X_test_vec = tfidf.transform(X_test)
 model = DecisionTreeClassifier(criterion="gini", random_state=60, splitter="best")
 model.fit(X_train_vec, y_train)
 y_pred = model.predict(X_test_vec)
-print(classification_report(y_test, y_pred))
+report = classification_report(y_test, y_pred, output_dict=True)
+clasification = pd.DataFrame(report).transpose()
+
+clasification.to_csv("tree/clasification.csv")
 
 joblib.dump(model, "tree/treee.joblib")
 joblib.dump(tfidf, "tree/tfidf_vectorizer.joblib")

@@ -21,6 +21,11 @@ X_test_vec = tfidf.transform(X_test)
 model = RandomForestClassifier(n_jobs=-1, criterion="entropy", n_estimators= 1000)
 model.fit(X_train_vec, y_train)
 y_pred = model.predict(X_test_vec)
+report = classification_report(y_test, y_pred, output_dict=True)
+clasification = pd.DataFrame(report).transpose()
+
+clasification.to_csv("random_for/clasification.csv")
+
 
 
 print(classification_report(y_test, y_pred))
