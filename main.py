@@ -13,6 +13,7 @@ from Models import logistic_regresion, random_forrr, svccc, treee, tsne
 
 # st.set_page_config(layout='wide')
 # start static  web page
+df = pd.read_csv("amlo.csv")
 
 
 with st.sidebar:
@@ -45,6 +46,12 @@ with st.sidebar:
 
 
 st.write("# AMLO CLASIFIER")
+
+st.write("### Number of clasification")
+with st.spinner("Loadig"):
+    st.bar_chart(df['Clasificacion'].value_counts(), color="#4A4646")
+
+    
 st.write("### TSNE")
 # left_co, cent_co,last_co = st.columns(3)
 # with cent_co:
