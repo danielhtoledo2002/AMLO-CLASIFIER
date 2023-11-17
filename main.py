@@ -9,7 +9,7 @@ import streamlit as st
 from langchain.chat_models import ChatOpenAI
 from langchain.schema.messages import HumanMessage, SystemMessage
 
-from Models import logistic_regresion, random_forrr, svccc, treee, tsne, wordcloud
+from Models import logistic_regresion, random_forrr, svccc, treee, tsne
 
 
 
@@ -60,12 +60,14 @@ with st.spinner("Loadig"):
 st.write("### TSNE")
 # left_co, cent_co,last_co = st.columns(3)
 # with cent_co:
+st.write("### Word cloud")
 with st.spinner("Loading chart"):
     st.plotly_chart(tsne.plot_tsne())
 
+st.write("### Word Cloud")
 
 with st.spinner("Loading"):
-    wordcloud.create_graph(dict(wordcloud.get_ngrams(1, df["Texto"])))
+    st.image("word_cloud.png", use_column_width=True)
 
 
 
