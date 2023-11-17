@@ -9,13 +9,18 @@ import streamlit as st
 from langchain.chat_models import ChatOpenAI
 from langchain.schema.messages import HumanMessage, SystemMessage
 
-from Models import logistic_regresion, random_forrr, svccc, treee, tsne
+from Models import logistic_regresion, random_forrr, svccc, treee, tsne, wordcloud
+
+
+
+
+
 
 # st.set_page_config(layout='wide')
 # start static  web page
 df = pd.read_csv("amlo.csv")
 
-
+st.set_option('deprecation.showPyplotGlobalUse', False)
 with st.sidebar:
     st.write(" # Configuration")
     selected = st.multiselect(
@@ -57,6 +62,12 @@ st.write("### TSNE")
 # with cent_co:
 with st.spinner("Loading chart"):
     st.plotly_chart(tsne.plot_tsne())
+
+
+with st.spinner("Loading"):
+    wordcloud.create_graph(dict(wordcloud.get_ngrams(1, df["Texto"])))
+
+
 
 st.write("### Logisic Regresion")
 with st.spinner("Loading table"):
