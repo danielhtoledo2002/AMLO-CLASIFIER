@@ -64,7 +64,6 @@ def predict(proba):
 
 
 def clasification_rep():
-    print(clasification.info())
     clasification["Unnamed: 0"] = clasification["Unnamed: 0"].astype(str)
 
     clasification["Unnamed: 0"] = clasification["Unnamed: 0"].apply(match_category)

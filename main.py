@@ -62,7 +62,7 @@ st.write("### Logisic Regresion")
 with st.spinner("Loading table"):
     st.dataframe(first_table, hide_index=True, use_container_width=True)
     text = st.text_input(
-        "",
+        "Input text to clasify with Logistic Regresion",
         label_visibility="visible",
         placeholder="Input texto to clasify ",
         key="input",
@@ -76,7 +76,7 @@ st.write("### SVC")
 with st.spinner("Loading table"):
     st.dataframe(second_table, hide_index=True, use_container_width=True)
     text2 = st.text_input(
-        "",
+        "Input text to clasify with SVG",
         label_visibility="visible",
         placeholder="Input texto to clasify ",
         key="input2",
@@ -89,7 +89,7 @@ st.write("### Desicion Trees")
 with st.spinner("Loading table"):
     st.dataframe(thrird_table, hide_index=True, use_container_width=True)
     text3 = st.text_input(
-        "",
+        "Input text with Desicion Tree",
         label_visibility="visible",
         placeholder="Input texto to clasify ",
         key="input3",
@@ -102,7 +102,7 @@ st.write("### Random Forest")
 with st.spinner("Loading table"):
     st.dataframe(fourt_table, hide_index=True, use_container_width=True)
     text4 = st.text_input(
-        "",
+        "Input text to clasify with Random Forest",
         label_visibility="visible",
         placeholder="Input texto to clasify ",
         key="input4",
