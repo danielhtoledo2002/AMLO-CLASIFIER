@@ -36,7 +36,7 @@ def create_graph(resultado):
     wordcloud = WordCloud(
     width=1200,
     height=1200,
-    background_color="gray",
+    background_color="black",
     stopwords=stopword_es,
     collocations=False,
     min_font_size=6,
@@ -44,7 +44,7 @@ def create_graph(resultado):
     plt.figure(figsize=(5, 5))
     plt.imshow(wordcloud)
     plt.axis("off")
-    plt.tight_layout()
+    plt.tight_layout(pad=0)
     plt.savefig('word_cloud.png')
 
 def clean_text(texto):
