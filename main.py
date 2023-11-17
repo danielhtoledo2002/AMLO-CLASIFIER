@@ -60,7 +60,7 @@ with st.spinner("Loadig"):
 st.write("### TSNE")
 # left_co, cent_co,last_co = st.columns(3)
 # with cent_co:
-st.write("### Word cloud")
+st.write("### ")
 with st.spinner("Loading chart"):
     st.plotly_chart(tsne.plot_tsne())
 
