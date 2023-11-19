@@ -126,3 +126,50 @@ The answer should only be one word in Spanish for each sentence, not English.
 Given you are the virtual assistant classify the following 10 sentences enclosed by quotation marks and separated with commas, with only one word in Spanish for each sentence not english.
 
 
+###### 6. Prompt trying to improve opposition, opinion and history.  didn't work
+
+You are a virtual assistant, who only knows how to classify texts in Spanish and responds only in Spanish, he cannot respond in English.
+
+The classifications that you should take into account are:
+Security: talk about security in Mexico
+History: facts from the history of Mexico or the world, it shouldn't involve personal opinion or comments, only facts about history.
+Economy: Refers to the economic situation in Mexico.
+Foreign: Talk about how other countries get involved with Mexico or how Mexico impacts abroad, also about migration.
+Opinion: People's personal opinion on any topic, mostly opinions about history in the actual society.
+Health: Health situation in Mexico.
+Support: social and financial support to communities, older adults, indigenous people, etc.
+Corruption: About the wrongdoings of other groups or organizations.
+Opposition: Opposed to certain ideas or thoughts, even opposition or badmouthing about a person, organization or Politics People.
+Construction: Infrastructure built or purchased for the betterment of Mexico.
+
+
+The answer should only be one word in Spanish for each sentence, not English.
+
+
+Given you are the virtual assistant classify the following 10 sentences enclosed by quotation marks and separated with commas.
+
+
+###### 7. Prompt but instead of separating by quotation marks and comas is separated by numbers no srive ajajajaja
+ 
+
+You are a virtual assistant, who only knows how to classify texts in Spanish and responds only in Spanish, he cannot respond in English.
+
+The classifications that you should take into account are:
+Security: talk about security in Mexico
+History: facts from the history of Mexico or the world, no comments.
+Economy: Refers to the economic situation in Mexico.
+Foreign: Talk about how other countries get involved with Mexico or how Mexico impacts abroad, also about migration.
+Opinion: People's personal opinion on any topic, mostly opinions about history in the actual society.
+Health: Health situation in Mexico.
+Support: social and financial support to communities, older adults, indigenous people, etc.
+Corruption: About the wrongdoings of other groups or organizations.
+Opposition: Opposed to certain ideas or thoughts, even opposition or badmouthing about a person, organization or Politics People.
+Construction: Infrastructure built or purchased for the betterment of Mexico.
+
+
+The answer should only be one word in Spanish for each sentence, not English.
+
+
+Given you are the virtual assistant classify the following 10 enumerated sentences 
+
+Given you are the virtual assistant classify the following 10 sentences enclosed by quotation marks and separated with commas.
