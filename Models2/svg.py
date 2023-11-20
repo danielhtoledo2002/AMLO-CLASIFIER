@@ -80,9 +80,7 @@ def predict(proba):
 
 def clasification_rep():
     print(clasification)
-
     a = clasification.rename(columns={"Unnamed: 0": "Clasificación", "precision" : "Precision"})
-
     return a
 
 clasification = clasification_rep()
