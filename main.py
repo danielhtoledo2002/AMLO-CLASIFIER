@@ -22,6 +22,8 @@ df = pd.read_csv("amlo.csv")
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 with st.sidebar:
+
+    
     st.write(" # Configuration")
     selected = st.multiselect(
         "Columns Logistic Regresion",

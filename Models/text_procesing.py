@@ -35,7 +35,6 @@ def clean_text(texto):
   lema = []
   for token in textofin:
     lema.append(token.lemma_)
-
   textofin = lema
   textofin = ' '.join(textofin)
   return textofin
