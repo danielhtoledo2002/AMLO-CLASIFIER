@@ -5,13 +5,13 @@ from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 
-#from Models2 import text_pro
-import text_pro
+from Models2 import text_pro
+#import text_pro
 # import text_procesing
 
 model = joblib.load("svcc/svc_create2.joblib")
 tfidf = joblib.load("svcc/tfidf_vectorizer2.joblib")
-#clasification = pd.read_csv("svcc/clasification2.csv")
+clasification = pd.read_csv("svcc/clasification2.csv")
 
 
 def predict_text(text):
@@ -79,20 +79,17 @@ def predict(proba):
 
 
 def clasification_rep():
-    clasification["Unnamed: 0"] = clasification["Unnamed: 0"].astype(str)
+    print(clasification)
 
-    clasification["Unnamed: 0"] = clasification["Unnamed: 0"].apply(match_category)
     a = clasification.rename(columns={"Unnamed: 0": "Clasificación", "precision" : "Precision"})
 
     return a
 
-
+clasification = clasification_rep()
 first = predict_text("Adultos mayores")
 
 
 print(predict(first))
-
-#print(clasification)
 
 
 

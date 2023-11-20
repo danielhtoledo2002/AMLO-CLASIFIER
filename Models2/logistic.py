@@ -6,8 +6,8 @@ from sklearn.manifold import TSNE
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.model_selection import train_test_split
 
-#from Models2 import text_pro
-import text_pro
+from Models2 import text_pro
+#import text_pro
 model = joblib.load("Lregresion/LogisticRegresion2.joblib")
 tfidf = joblib.load("Lregresion/tfidf_vectorizer2.joblib")
 
@@ -87,9 +87,8 @@ def clasification_rep():
     return a
 
 
-first = predict_text("Adultos mayores")
+print(clasification_rep())
 
 
-print(predict(first))
 
-print(clasification)
+
