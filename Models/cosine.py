@@ -14,7 +14,8 @@ from nltk.stem.wordnet import WordNetLemmatizer
 
 
 df = pd.read_csv("../clean_amlo.csv")
-df['vector'] = df["vector"].apply(lambda x: 
+if type(df['vector'][0]) == "str":
+    df['vector'] = df["vector"].apply(lambda x: 
                            np.fromstring(
                                x.replace('\n','')
                                 .replace('[','')
