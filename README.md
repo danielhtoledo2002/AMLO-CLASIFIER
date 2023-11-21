@@ -20,14 +20,17 @@ That creates a Directory and to run your python scripts you need to:
 - `pip install openai`
 - `pip install numpy`
 - `pip install joblib`
--  `pip install plotly`
+- `pip install plotly`
 
 
 
 ### How to run 
-In case you have a virtual enviroment: 
-  - `./venv/bin/streamlit run main.py`
-Local :
-- `streamlit run main.py`
+#### if you don't want to train the models run :
+  In case you have a virtual enviroment: 
+  - `./venv/bin/streamlit run main.py` or `python streamlit run main.py`
+#### Train models
+  - 'python Models/(all the files that start create..  .py'
+  - 'python Models2/(all the files that start create..  .py'
+  - `./venv/bin/streamlit run main.py` or `python streamlit run main.py`
 
 
