@@ -87,7 +87,6 @@ def clasification_rep():
     return a
 
 
-print(clasification_rep())
 
 
 

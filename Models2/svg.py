@@ -71,23 +71,17 @@ def match_category2(category):
 
 
 def predict(proba):
-    proba = list(proba[0])
-    print(proba)
     maxx = max(proba)
     index = proba.index(maxx)
     return f"La probabilidad es {maxx} y lo categoriza como {match_category2(index)}"
 
 
 def clasification_rep():
-    print(clasification)
     a = clasification.rename(columns={"Unnamed: 0": "Clasificación", "precision" : "Precision"})
     return a
 
-clasification = clasification_rep()
-first = predict_text("Adultos mayores")
 
 
-print(predict(first))
 
 
 

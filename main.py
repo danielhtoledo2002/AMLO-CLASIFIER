@@ -30,7 +30,7 @@ with st.sidebar:
     st.write(" # Configuration")
     st.write("We train two types of models, one that  was classified by human and other that chat-gpt-3.5 did.")
     clas = st.radio(
-        "Select  which which clasification you want to use",
+        "Select  which clasification you want to use",
         ["Chat gpt :computer:", "Human :male-technologist:"],
         index=None,
     )
