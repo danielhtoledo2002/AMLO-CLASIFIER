@@ -26,11 +26,10 @@ That creates a Directory and to run your python scripts you need to:
 
 ### How to run 
 #### if you don't want to train the models run :
-  In case you have a virtual enviroment: 
   - `./venv/bin/streamlit run main.py` or `python streamlit run main.py`
 #### Train models
-  - 'python Models/(all the files that start create..  .py'
-  - 'python Models2/(all the files that start create..  .py'
+  - `python Models/(all the files that start create..  .py`
+  - `python Models2/(all the files that start create..  .py`
   - `./venv/bin/streamlit run main.py` or `python streamlit run main.py`
 
 
