@@ -12,6 +12,7 @@ import re
 
 df = pd.read_csv("OpenAi/amlo_clasify_chatpgt3.csv")
 
+
 stop_words_es = stopwords.words('spanish')
 
 
@@ -22,6 +23,8 @@ def return_dataframe():
     
     df['Texto_limpio'] = df['Texto'].apply(clean_text)
     return df
+
+
 
 
 
