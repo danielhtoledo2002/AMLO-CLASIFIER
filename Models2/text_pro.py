@@ -1,9 +1,8 @@
-
-# Tool from text processing  
+# Tool from text processing
 import nltk
 from nltk.corpus import stopwords
 
-# Tool  
+# Tool
 import spacy
 import pandas as pd
 
@@ -13,56 +12,57 @@ import re
 df = pd.read_csv("OpenAi/amlo_clasify_chatpgt3.csv")
 
 
-stop_words_es = stopwords.words('spanish')
+stop_words_es = stopwords.words("spanish")
 
 
-nlp = spacy.load('es_core_news_lg')
+nlp = spacy.load("es_core_news_lg")
+
+from spacy.lang.es.stop_words import STOP_WORDS
 
 
 def return_dataframe():
-    
-    df['Texto_limpio'] = df['Texto'].apply(clean_text)
+    df["Texto_limpio"] = df["Texto"].apply(clean_text)
     return df
 
 
+# fn to clean text
 
-
-
-# fn to clean text 
 
 def clean_text(texto):
-  textofin = texto.lower()
-  textofin = re.sub(r'([^0-9A-Za-z-À-ÿ \t])','', textofin,)
-  textofin = nlp(textofin)
-  lema = []
-  for token in textofin:
-    lema.append(token.lemma_)
-  textofin = lema
-  textofin = ' '.join(textofin)
-  return textofin
-  
+    textofin = texto.lower()
+    textofin = re.sub(
+        r"([^0-9A-Za-z-À-ÿ \t])",
+        "",
+        textofin,
+    )
+    textofin = nlp(textofin)
+    lema = []
+    for token in textofin:
+        lema.append(token.lemma_)
+    textofin = lema
+    textofin = [palabra for palabra in textofin if palabra not in STOP_WORDS]
+    textofin = " ".join(textofin)
+    return textofin
+
+
 def clasification_to_num(text):
-    if text == 'apoyo':
+    if text == "apoyo":
         return 0
-    elif text == 'competencia':
+    elif text == "competencia":
         return 1
-    elif text == 'construccion' :
+    elif text == "construccion":
         return 2
-    elif text == 'corrupcion':
+    elif text == "corrupcion":
         return 3
-    elif text == 'economia':
+    elif text == "economia":
         return 4
-    elif text == 'exterior':
+    elif text == "exterior":
         return 5
-    elif text == 'historia':
+    elif text == "historia":
         return 6
-    elif text == 'opinion':
+    elif text == "opinion":
         return 7
-    elif text == 'salud':
+    elif text == "salud":
         return 8
-    elif text == 'seguridad':
-        return 9 
-  
-
-
-
+    elif text == "seguridad":
+        return 9

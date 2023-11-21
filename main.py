@@ -85,7 +85,11 @@ if select_clas == "Chat gpt :computer:":
     st.write("### Number of clasification")
     with st.spinner("Loadig"):
         st.bar_chart(df['classification_spanish'].value_counts(), color="#4A4646")
-            
+
+    with st.spinner("Loading"):
+        st.image("word_cloud2.png", use_column_width=True)
+
+
     st.write("### TSNE")
     # left_co, cent_co,last_co = st.columns(3)
     # with cent_co:
