@@ -6,7 +6,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 
 from Models2 import text_pro
-#import text_pro
+
+# import text_pro
 # import text_procesing
 
 model = joblib.load("svcc/svc_create2.joblib")
@@ -40,12 +41,14 @@ def match_category(category):
             return "historia"
         case "7":
             return "opinion"
-        case "8": 
+        case "8":
             return "salud"
         case "9":
             return "seguridad"
         case _:
             return category
+
+
 def match_category2(category):
     match category:
         case 0:
@@ -64,24 +67,21 @@ def match_category2(category):
             return "historia"
         case 7:
             return "opinion"
-        case 8: 
+        case 8:
             return "salud"
         case 9:
             return "seguridad"
 
 
 def predict(proba):
+    proba = list(proba[0])
     maxx = max(proba)
     index = proba.index(maxx)
     return f"La probabilidad es {maxx} y lo categoriza como {match_category2(index)}"
 
 
 def clasification_rep():
-    a = clasification.rename(columns={"Unnamed: 0": "Clasificación", "precision" : "Precision"})
+    a = clasification.rename(
+        columns={"Unnamed: 0": "Clasificación", "precision": "Precision"}
+    )
     return a
-
-
-
-
-
-
