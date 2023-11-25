@@ -10,7 +10,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.schema.messages import HumanMessage, SystemMessage
 
 from Models import logistic_regresion, random_forrr, svccc, treee, tsne
-from Models2 import tesne, logistic, svg
+from Models2 import tesne, logistic, svg, cosine_large
 
 
 
@@ -124,6 +124,33 @@ if select_clas == "Chat gpt :computer:":
             if text2 != "":
                 proba = svg.predict_text(text2)
                 st.write(svg.predict(proba))
+
+    st.write("### COSINE SIMILARITY")
+    with st.spinner("Loading table"):
+
+        text3 = st.text_input(
+            "Top x similarities of",
+            label_visibility="visible",
+            placeholder="text ",
+            key="input7",
+        )
+        number = st.number_input(
+            "Number",
+            min_value=3,
+            max_value=50,
+            value=3,
+            label_visibility="visible",
+            placeholder="number",
+            key="input8",
+        )
+        if st.button("Enviar", key="button8"):
+            if text3 != "":
+                st.write("jp;a")
+                #topX = st.dataframe(cosine_large.getTopXDocs_large(text2, number),
+                #                     hide_index=True, use_container_width=True)
+    
+
+
 
 else :
     st.write("# AMLO CLASIFIER")
