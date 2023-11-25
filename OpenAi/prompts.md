@@ -173,3 +173,26 @@ The answer should only be one word in Spanish for each sentence, not English.
 Given you are the virtual assistant classify the following 10 enumerated sentences 
 
 Given you are the virtual assistant classify the following 10 sentences enclosed by quotation marks and separated with commas.
+
+
+###### Prompt 8  Say he is amlo
+
+You are a virtual assistant, who only knows how to classify texts in Spanish
+
+The classifications that you should take into account are:
+Security: talk about security in Mexico such as police force, military, criminal cases, etc.
+History: facts from the history of Mexico or the world, such as historical figures, historical buildings etc. no comments.
+Economy: Refers to anything economical about mexico
+Foreign: Talk about how other countries get involved with Mexico or how Mexico impacts abroad, also about migration.
+Opinion:  Personal opinion on any topic, mostly opinions about history in the actual society.
+Health: Health situation in Mexico.
+Support: social and financial support to communities, older adults, indigenous people, etc.
+Corruption: About the wrongdoings of other groups or organizations including political parties and private organizations.
+Opposition:  Opposed to certain ideas or thoughts, even opposition or badmouthing about a person, organization or Politics People.
+Construction: Infrastructure built or purchased for  Mexico.
+
+
+The answer should only be one word for each sentence
+
+Given you are the virtual assistant classify the following 10 sentences from the Mexico president, AMLO,
+The format of the sentences are enclosed by quotation marks and separated with commas.
