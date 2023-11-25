@@ -137,7 +137,7 @@ if select_clas == "Chat gpt :computer:":
         number = st.number_input(
             "Number",
             min_value=3,
-            max_value=50,
+            max_value=25,
             value=3,
             label_visibility="visible",
             placeholder="number",
@@ -145,9 +145,11 @@ if select_clas == "Chat gpt :computer:":
         )
         if st.button("Enviar", key="button8"):
             if text3 != "":
-                st.write("jp;a")
-                #topX = st.dataframe(cosine_large.getTopXDocs_large(text2, number),
-                #                     hide_index=True, use_container_width=True)
+                dataframe = cosine_large.getTopXDocs_large(text3, number)
+                dataframe = dataframe.reset_index(drop=True)
+                dataframe.index +=1
+                topX = st.table(dataframe)
+                
     
 
 
@@ -227,3 +229,28 @@ else :
             if text4 != "":
                 proba = random_forrr.predict_text(text4)
                 st.write(random_forrr.predict(proba))
+    st.write("### COSINE SIMILARITY")
+    with st.spinner("Loading table"):
+
+        text5 = st.text_input(
+            "Top x similarities of",
+            label_visibility="visible",
+            placeholder="text ",
+            key="input5",
+        )
+        number = st.number_input(
+            "Number",
+            min_value=3,
+            max_value=25,
+            value=3,
+            label_visibility="visible",
+            placeholder="number",
+            key="input6",
+        )
+        if st.button("Enviar", key="button8"):
+            if text5 != "":
+                dataframe = cosine_large.getTopXDocs_large(text5, number)
+                dataframe = dataframe.reset_index(drop=True)
+                dataframe.index +=1
+                topX = st.table(dataframe)
+    

@@ -13,7 +13,7 @@ stop_words_en= stopwords.words('spanish')
 from nltk.stem.wordnet import WordNetLemmatizer
 
 
-df = pd.read_csv("../clean_amlo.csv")
+df = pd.read_csv("clean_amlo.csv")
 if type(df['vector'][0]) == "str":
     df['vector'] = df["vector"].apply(lambda x: 
                            np.fromstring(
