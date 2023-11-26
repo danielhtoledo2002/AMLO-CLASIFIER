@@ -10,7 +10,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.schema.messages import HumanMessage, SystemMessage
 
 from Models import logistic_regresion, random_forrr, svccc, treee, tsne
-from Models2 import tesne, logistic, svg, cosine_large
+from Models2 import tesne, logistic, svg, cosine_large, svg2
 from DeepLearningModels import load_CNN, load_FNN
 
 
@@ -64,6 +64,13 @@ with st.sidebar:
             default=["Clasificación", "Precision"],
         )
         Fourth_table2 = load_FNN.clasification_rep()[selected]
+        selected = st.multiselect(
+            "Columns SVG 2",
+            svg2.clasification_rep().columns,
+            default=["Clasificación", "Precision"],
+        )
+        fifth_table2 = svg2.clasification_rep()[selected]
+        
     
     else: 
         selected = st.multiselect(
@@ -125,7 +132,7 @@ if select_clas == "Chat gpt :computer:":
                 proba = logistic.predict_text(text)
                 st.write(logistic.predict(proba))
 
-    st.write("### SVC")
+    st.write("### SVC with 21k")
     with st.spinner("Loading table"):
         st.dataframe(second_table2, hide_index=True, use_container_width=True)
         text2 = st.text_input(
@@ -138,6 +145,19 @@ if select_clas == "Chat gpt :computer:":
             if text2 != "":
                 proba = svg.predict_text(text2)
                 st.write(svg.predict(proba))
+    st.write("### SVC with 15k")
+    with st.spinner("Loading table"):
+        st.dataframe(fifth_table2, hide_index=True, use_container_width=True)
+        text2 = st.text_input(
+            "Input text to clasify with SVG 2",
+            label_visibility="visible",
+            placeholder="Input texto to clasify ",
+            key="input999",
+        )
+        if st.button("Enviar", key="button999"):
+            if text2 != "":
+                proba = svg2.predict_text(text2)
+                st.write(svg2.predict(proba))
 
     st.write("### COSINE SIMILARITY")
     with st.spinner("Loading table"):
