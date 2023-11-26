@@ -37,7 +37,7 @@ def predict_text(texto):
   texto = vectorize(texto)
   texto = texto.reshape(1,-1)
   texto = scaler.transform(texto)
-  texto = texto.reshape(1,300,1)
+  #texto = texto.reshape(1,300,1)
   #texto = new_model.predict(texto)
   probabilida = new_model.predict(texto)
 
