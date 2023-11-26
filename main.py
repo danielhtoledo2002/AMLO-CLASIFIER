@@ -20,6 +20,7 @@ from DeepLearningModels import load_CNN, load_FNN
 # start static  web page
 df = pd.read_csv("OpenAi/amlo_clasify_chatpgt3.csv")
 df2 = pd.read_csv("amlo.csv")
+df3 = pd.read_csv("OpenAi/amlo_clasify_chatpgt_15k.csv")
 
 st.set_option("deprecation.showPyplotGlobalUse", False)
 
@@ -291,6 +292,11 @@ elif select_clas == "Human :male-technologist:":
                 topX = st.table(dataframe)
 elif select_clas == "Chat gpt 15k:computer:":
     st.write("# AMLO CLASIFIER")
+    st.write("### Number of clasification")
+    with st.spinner("Loadig"):
+        st.bar_chart(df3["classification_spanish"].value_counts(), color="#4A4646")
+    with st.spinner("Loading"):
+        st.image("word_cloud3.png", use_column_width=True)
 
     st.write("### SVC with 15k")
     with st.spinner("Loading table"):

@@ -19,7 +19,7 @@ stopword_es = stopwords.words("spanish")
 # from Models import text_procesing
 import text_pro
 
-df = pd.read_csv("OpenAi/amlo_clasify_chatpgt3.csv")
+df = pd.read_csv("OpenAi/amlo_clasify_chatpgt_15k.csv")
 
 df["clean"] = df["Texto"].apply(text_pro.clean_text)
 
@@ -50,7 +50,7 @@ def create_graph(resultado):
     plt.imshow(wordcloud)
     plt.axis("off")
     plt.tight_layout(pad=0)
-    plt.savefig("word_cloud2.png")
+    plt.savefig("word_cloud3.png")
 
 
 
