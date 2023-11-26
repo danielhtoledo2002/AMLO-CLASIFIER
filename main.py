@@ -146,7 +146,7 @@ if select_clas == "Chat gpt :computer:":
             "Top x similarities of",
             label_visibility="visible",
             placeholder="text ",
-            key="input7",
+            key="input10",
         )
         number = st.number_input(
             "Number",
@@ -155,9 +155,9 @@ if select_clas == "Chat gpt :computer:":
             value=3,
             label_visibility="visible",
             placeholder="number",
-            key="input8",
+            key="input800",
         )
-        if st.button("Enviar", key="button8"):
+        if st.button("Enviar", key="button100"):
             if text3 != "":
                 dataframe = cosine_large.getTopXDocs_large(text3, number)
                 dataframe = dataframe.reset_index(drop=True)
@@ -188,7 +188,7 @@ if select_clas == "Chat gpt :computer:":
             "Input text to clasify with FNN",
             label_visibility="visible",
             placeholder="Input texto to clasify ",
-            key="input8",
+            key="input9",
         )
         if st.button("Enviar", key="button9"):
             if text4 != "":
