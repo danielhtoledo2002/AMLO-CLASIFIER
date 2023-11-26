@@ -24,7 +24,7 @@ import joblib
 
 
 #import dataset
-df = pd.read_csv("amlo_clasify_chatpgt3.csv")
+df = pd.read_csv("OpenAi/amlo_clasify_chatpgt3.csv")
 
 
 # check if gpu is working

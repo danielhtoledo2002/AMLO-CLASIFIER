@@ -1,5 +1,6 @@
 # Tool from text processing
 import nltk
+nltk.download('stopwords')
 from nltk.corpus import stopwords
 
 # Tool
@@ -9,7 +10,7 @@ import pandas as pd
 # Regual expressions
 import re
 
-df = pd.read_csv("amlo_clasify_chatpgt3.csv")
+df = pd.read_csv("OpenAi/amlo_clasify_chatpgt3.csv")
 
 
 stop_words_es = stopwords.words("spanish")
