@@ -3,8 +3,10 @@ import os
 
 # Tool
 import pandas as pd
+
 # web framework
 import streamlit as st
+
 # OPEN AI
 from langchain.chat_models import ChatOpenAI
 from langchain.schema.messages import HumanMessage, SystemMessage
@@ -14,24 +16,23 @@ from Models2 import tesne, logistic, svg, cosine_large, svg2
 from DeepLearningModels import load_CNN, load_FNN
 
 
-
-
-
 # st.set_page_config(layout='wide')
 # start static  web page
 df = pd.read_csv("OpenAi/amlo_clasify_chatpgt3.csv")
 df2 = pd.read_csv("amlo.csv")
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
+st.set_option("deprecation.showPyplotGlobalUse", False)
 
 select_clas = ""
 
 with st.sidebar:
     st.write(" # Configuration")
-    st.write("We train two types of models, one that  was classified by human and other that chat-gpt-3.5 did.")
+    st.write(
+        "We train three types of models, one that  was classified by human  other that chat-gpt-3.5 did with all data and the last one with only 15k with chat gpt."
+    )
     clas = st.radio(
         "Select  which clasification you want to use",
-        ["Chat gpt :computer:", "Human :male-technologist:"],
+        ["Chat gpt :computer:", "Human :male-technologist:", "Chat gpt 15k:computer:"],
         index=None,
     )
     select_clas = clas
@@ -43,7 +44,7 @@ with st.sidebar:
             default=["Clasificación", "Precision"],
         )
         first_table2 = logistic.clasification_rep()[selected]
-        
+
         selected = st.multiselect(
             "Columns SVG",
             svg.clasification_rep().columns,
@@ -64,15 +65,8 @@ with st.sidebar:
             default=["Clasificación", "Precision"],
         )
         Fourth_table2 = load_FNN.clasification_rep()[selected]
-        selected = st.multiselect(
-            "Columns SVG 2",
-            svg2.clasification_rep().columns,
-            default=["Clasificación", "Precision"],
-        )
-        fifth_table2 = svg2.clasification_rep()[selected]
-        
-    
-    else: 
+
+    elif select_clas == "Human :male-technologist:":
         selected = st.multiselect(
             "Columns Logistic Regresion",
             logistic_regresion.clasification_rep().columns,
@@ -98,18 +92,22 @@ with st.sidebar:
             default=["Clasificación", "Precision"],
         )
         fourt_table = random_forrr.clasification_rep()[selected]
-
-
+    elif select_clas == "Chat gpt 15k:computer:":
+        selected = st.multiselect(
+            "Columns SVG 2",
+            svg2.clasification_rep().columns,
+            default=["Clasificación", "Precision"],
+        )
+        third_table3 = svg2.clasification_rep()[selected]
 
 if select_clas == "Chat gpt :computer:":
     st.write("# AMLO CLASIFIER")
     st.write("### Number of clasification")
     with st.spinner("Loadig"):
-        st.bar_chart(df['classification_spanish'].value_counts(), color="#4A4646")
+        st.bar_chart(df["classification_spanish"].value_counts(), color="#4A4646")
 
     with st.spinner("Loading"):
         st.image("word_cloud2.png", use_column_width=True)
-
 
     st.write("### TSNE")
     # left_co, cent_co,last_co = st.columns(3)
@@ -145,23 +143,9 @@ if select_clas == "Chat gpt :computer:":
             if text2 != "":
                 proba = svg.predict_text(text2)
                 st.write(svg.predict(proba))
-    st.write("### SVC with 15k")
-    with st.spinner("Loading table"):
-        st.dataframe(fifth_table2, hide_index=True, use_container_width=True)
-        text2 = st.text_input(
-            "Input text to clasify with SVG 2",
-            label_visibility="visible",
-            placeholder="Input texto to clasify ",
-            key="input999",
-        )
-        if st.button("Enviar", key="button999"):
-            if text2 != "":
-                proba = svg2.predict_text(text2)
-                st.write(svg2.predict(proba))
 
     st.write("### COSINE SIMILARITY")
     with st.spinner("Loading table"):
-
         text3 = st.text_input(
             "Top x similarities of",
             label_visibility="visible",
@@ -181,12 +165,8 @@ if select_clas == "Chat gpt :computer:":
             if text3 != "":
                 dataframe = cosine_large.getTopXDocs_large(text3, number)
                 dataframe = dataframe.reset_index(drop=True)
-                dataframe.index +=1
+                dataframe.index += 1
                 topX = st.table(dataframe)
-                
-    
-
-
 
     st.write("### CNN")
     with st.spinner("Loading table"):
@@ -214,14 +194,13 @@ if select_clas == "Chat gpt :computer:":
             if text4 != "":
                 proba = load_FNN.predict_text(text3)
                 st.write(load_FNN.predict(proba))
-else :
+elif select_clas == "Human :male-technologist:":
     st.write("# AMLO CLASIFIER")
 
     st.write("### Number of clasification")
     with st.spinner("Loadig"):
-        st.bar_chart(df2['Clasificacion'].value_counts(), color="#4A4646")
+        st.bar_chart(df2["Clasificacion"].value_counts(), color="#4A4646")
 
-        
     st.write("### TSNE")
     # left_co, cent_co,last_co = st.columns(3)
     # with cent_co:
@@ -233,8 +212,6 @@ else :
 
     with st.spinner("Loading"):
         st.image("word_cloud.png", use_column_width=True)
-
-
 
     st.write("### Logisic Regresion")
     with st.spinner("Loading table"):
@@ -291,7 +268,6 @@ else :
                 st.write(random_forrr.predict(proba))
     st.write("### COSINE SIMILARITY")
     with st.spinner("Loading table"):
-
         text5 = st.text_input(
             "Top x similarities of",
             label_visibility="visible",
@@ -311,6 +287,21 @@ else :
             if text5 != "":
                 dataframe = cosine_large.getTopXDocs_large(text5, number)
                 dataframe = dataframe.reset_index(drop=True)
-                dataframe.index +=1
+                dataframe.index += 1
                 topX = st.table(dataframe)
-    
+elif select_clas == "Chat gpt 15k:computer:":
+    st.write("# AMLO CLASIFIER")
+
+    st.write("### SVC with 15k")
+    with st.spinner("Loading table"):
+        st.dataframe(third_table3, hide_index=True, use_container_width=True)
+        text2 = st.text_input(
+            "Input text to clasify with SVG 2",
+            label_visibility="visible",
+            placeholder="Input texto to clasify ",
+            key="input999",
+        )
+        if st.button("Enviar", key="button999"):
+            if text2 != "":
+                proba = svg2.predict_text(text2)
+                st.write(svg2.predict(proba))
