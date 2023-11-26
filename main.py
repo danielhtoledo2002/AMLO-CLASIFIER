@@ -4,6 +4,7 @@ import os
 # Tool
 import pandas as pd
 
+import os
 # web framework
 import streamlit as st
 
@@ -13,8 +14,7 @@ from langchain.schema.messages import HumanMessage, SystemMessage
 
 from Models import logistic_regresion, random_forrr, svccc, treee, tsne
 from Models2 import tesne, logistic, svg, cosine_large, svg2
-from DeepLearningModels import load_CNN, load_FNN
-
+from DeepLearningModels import load_CNN, load_FNN, load_RNN
 
 # st.set_page_config(layout='wide')
 # start static  web page
@@ -36,6 +36,13 @@ with st.sidebar:
         ["Chat gpt :computer:", "Human :male-technologist:", "Chat gpt 15k:computer:"],
         index=None,
     )
+
+    st.write(
+        "Upload key if you want to use our Recurrent Model"
+    )
+
+    api_key_file = st.file_uploader('Upload key', type=['txt'])
+
     select_clas = clas
     if select_clas == "Chat gpt :computer:":
         st.write("in progress")
@@ -195,6 +202,24 @@ if select_clas == "Chat gpt :computer:":
             if text4 != "":
                 proba = load_FNN.predict_text(text3)
                 st.write(load_FNN.predict(proba))
+    st.write('### RNN: Opinion')
+    if api_key_file is not None:
+        key = str(api_key_file.readline().decode('utf-8'))
+        os.environ['OPENAI_API_KEY'] = key
+
+        llm = ChatOpenAI(model='gpt-3.5-turbo')
+        query = st.text_input('Enter style of the opinion')
+        prompt = 'You are a virtual assistant that given a text without syntax and without coherence, reformulate a new text that has the same idea and that is coherent, syntaxed and rational and also is written as an opinion. Do not return the input text.'
+        if st.button('Generate Output'):
+            text_RNN = load_RNN.generate_text(query, 5)
+            text_RNN = str(text_RNN)
+            print('-------------')
+            print(text_RNN)
+            print('-------------')
+            response = llm.invoke([SystemMessage(content=prompt), HumanMessage(content=text_RNN)])
+
+            st.write(f"Texto:  {response.content}")
+
 elif select_clas == "Human :male-technologist:":
     st.write("# AMLO CLASIFIER")
 
@@ -290,6 +315,7 @@ elif select_clas == "Human :male-technologist:":
                 dataframe = dataframe.reset_index(drop=True)
                 dataframe.index += 1
                 topX = st.table(dataframe)
+
 elif select_clas == "Chat gpt 15k:computer:":
     st.write("# AMLO CLASIFIER")
     st.write("### Number of clasification")
