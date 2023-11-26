@@ -10,7 +10,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.schema.messages import HumanMessage, SystemMessage
 
 from Models import logistic_regresion, random_forrr, svccc, treee, tsne
-from Models2 import tesne, logistic, svg
+from Models2 import tesne, logistic, svg, cosine_large
 from DeepLearningModels import load_CNN, load_FNN
 
 
@@ -139,6 +139,35 @@ if select_clas == "Chat gpt :computer:":
                 proba = svg.predict_text(text2)
                 st.write(svg.predict(proba))
 
+    st.write("### COSINE SIMILARITY")
+    with st.spinner("Loading table"):
+
+        text3 = st.text_input(
+            "Top x similarities of",
+            label_visibility="visible",
+            placeholder="text ",
+            key="input7",
+        )
+        number = st.number_input(
+            "Number",
+            min_value=3,
+            max_value=25,
+            value=3,
+            label_visibility="visible",
+            placeholder="number",
+            key="input8",
+        )
+        if st.button("Enviar", key="button8"):
+            if text3 != "":
+                dataframe = cosine_large.getTopXDocs_large(text3, number)
+                dataframe = dataframe.reset_index(drop=True)
+                dataframe.index +=1
+                topX = st.table(dataframe)
+                
+    
+
+
+
     st.write("### CNN")
     with st.spinner("Loading table"):
         st.dataframe(third_table2, hide_index=True, use_container_width=True)
@@ -240,3 +269,28 @@ else :
             if text4 != "":
                 proba = random_forrr.predict_text(text4)
                 st.write(random_forrr.predict(proba))
+    st.write("### COSINE SIMILARITY")
+    with st.spinner("Loading table"):
+
+        text5 = st.text_input(
+            "Top x similarities of",
+            label_visibility="visible",
+            placeholder="text ",
+            key="input5",
+        )
+        number = st.number_input(
+            "Number",
+            min_value=3,
+            max_value=25,
+            value=3,
+            label_visibility="visible",
+            placeholder="number",
+            key="input6",
+        )
+        if st.button("Enviar", key="button8"):
+            if text5 != "":
+                dataframe = cosine_large.getTopXDocs_large(text5, number)
+                dataframe = dataframe.reset_index(drop=True)
+                dataframe.index +=1
+                topX = st.table(dataframe)
+    
