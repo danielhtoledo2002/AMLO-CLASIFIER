@@ -188,7 +188,7 @@ Opinion:  Personal opinion on any topic, mostly opinions about history in the ac
 Health: Health situation in Mexico.
 Support: social and financial support to communities, older adults, indigenous people, etc.
 Corruption: About the wrongdoings of other groups or organizations including political parties and private organizations.
-Opposition:  Opposed to certain ideas or thoughts, even opposition or badmouthing about a person, organization or Politics People.
+Opposition:  Opposed to certain ideas or thoughts, even opposition or badmouthing about a person.
 Construction: Infrastructure built or purchased for  Mexico.
 
 
