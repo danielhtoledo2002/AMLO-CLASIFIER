@@ -13,15 +13,16 @@ tfidf = TfidfVectorizer(ngram_range=(1, 3))
 X = df["Texto_limpio"]
 y = df["classification_spanish"]
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, train_size=0.85, random_state=42
+    X, y, train_size=0.95
 )
 X_train_vec = tfidf.fit_transform(X_train)
 X_test_vec = tfidf.transform(X_test)
-model = SVC(kernel="linear", random_state=30, probability=True)
+model = SVC(kernel="linear", probability=True)
 model.fit(X_train_vec, y_train)
 y_pred = model.predict(X_test_vec)
 
 report = classification_report(y_test, y_pred, output_dict=True)
+print(report)
 clasification = pd.DataFrame(report).transpose()
 clasification.to_csv("svcc/clasification2.csv")
 
