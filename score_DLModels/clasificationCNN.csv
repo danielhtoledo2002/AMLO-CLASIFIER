@@ -1,0 +1,14 @@
+,precision,recall,f1-score,support
+apoyo,0.44,0.36,0.4,742
+competencia,0.4,0.45,0.42,1407
+construccion,0.6,0.67,0.64,661
+corrupcion,0.41,0.49,0.45,633
+economia,0.56,0.52,0.54,354
+exterior,0.61,0.34,0.43,418
+historia,0.55,0.21,0.3,326
+opinion,0.41,0.49,0.45,1527
+salud,0.6,0.24,0.35,169
+seguridad,0.53,0.42,0.47,281
+accuracy,,,0.46,6518
+macro avg,0.51,0.42,0.44,6518
+weighted avg,0.47,0.46,0.45,6518
