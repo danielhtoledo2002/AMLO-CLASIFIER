@@ -11,7 +11,6 @@ import streamlit as st
 from langchain.chat_models import ChatOpenAI
 from langchain.schema.messages import HumanMessage, SystemMessage
 
-from Models import logistic_regresion, random_forrr, svccc, treee, tsne
 from Models2 import tesne, logistic, svg, cosine_large, svg2
 from DeepLearningModels import load_CNN, load_FNN
 
@@ -31,27 +30,27 @@ with st.sidebar:
         index=None,
     )
     select_clas = clas
+    if select_clas == "Chat gpt 15k:computer:":
+        selected = st.multiselect(
+            "Columns SVG 2",
+            svg2.clasification_rep().columns,
+            default=["Clasificación", "Precision"],
+        )
+        third_table3 = svg2.clasification_rep()[selected]
+
+
+
+
+
+
+
+
+
+
+
 
 
 if select_clas == "Chat gpt 15k:computer:":
-    selected = st.multiselect(
-        "Columns SVG 2",
-        svg2.clasification_rep().columns,
-        default=["Clasificación", "Precision"],
-    )
-    third_table3 = svg2.clasification_rep()[selected]
-
-
-
-
-
-
-
-
-
-
-
-elif select_clas == "Chat gpt 15k:computer:":
     st.write("# AMLO CLASIFIER")
     st.write("### Number of clasification")
     with st.spinner("Loadig"):
