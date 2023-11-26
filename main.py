@@ -10,7 +10,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.schema.messages import HumanMessage, SystemMessage
 
 from Models import logistic_regresion, random_forrr, svccc, treee, tsne
-from Models2 import tesne, logistic, svg
+from Models2 import tesne, logistic, svg, tree, random_forr
 from DeepLearningModels import load_CNN, load_FNN
 
 
@@ -52,18 +52,32 @@ with st.sidebar:
         second_table2 = svg.clasification_rep()[selected]
 
         selected = st.multiselect(
+            "Columns Decision Tree",
+            tree.clasification_rep().columns,
+            default=["Clasificación", "Precision"],
+        )
+        third_table2 = tree.clasification_rep()[selected]
+
+        selected = st.multiselect(
+            "Columns Random Forest",
+            random_forr.clasification_rep().columns,
+            default=["Clasificación", "Precision"],
+        )
+        fourth_table2 = random_forr.clasification_rep()[selected]
+
+        selected = st.multiselect(
             "Columns CNN",
             load_CNN.clasification_rep().columns,
             default=["Clasificación", "Precision"],
         )
-        third_table2 = load_CNN.clasification_rep()[selected]
+        fifth_table2 = load_CNN.clasification_rep()[selected]
 
         selected = st.multiselect(
             "Columns FNN",
             load_FNN.clasification_rep().columns,
             default=["Clasificación", "Precision"],
         )
-        Fourth_table2 = load_FNN.clasification_rep()[selected]
+        sixth_table2 = load_FNN.clasification_rep()[selected]
     
     else: 
         selected = st.multiselect(
@@ -138,32 +152,58 @@ if select_clas == "Chat gpt :computer:":
             if text2 != "":
                 proba = svg.predict_text(text2)
                 st.write(svg.predict(proba))
-
-    st.write("### CNN")
+    st.write("### Desicion Trees")
     with st.spinner("Loading table"):
         st.dataframe(third_table2, hide_index=True, use_container_width=True)
         text3 = st.text_input(
-            "Input text to clasify with CNN",
+            "Input text with Desicion Tree",
             label_visibility="visible",
             placeholder="Input texto to clasify ",
             key="input7",
         )
-        if st.button("Enviar", key="button8"):
+        if st.button("Enviar", key="button3"):
             if text3 != "":
-                proba = load_CNN.predict_text(text3)
-                st.write(load_CNN.predict(proba))
-    st.write("### FNN")
+                proba = tree.predict_text(text3)
+                st.write(tree.predict(proba))
+    st.write("### Random Forest")
     with st.spinner("Loading table"):
-        st.dataframe(Fourth_table2, hide_index=True, use_container_width=True)
+        st.dataframe(third_table2, hide_index=True, use_container_width=True)
         text4 = st.text_input(
-            "Input text to clasify with FNN",
+            "Input text with Random Forest",
             label_visibility="visible",
             placeholder="Input texto to clasify ",
             key="input8",
         )
-        if st.button("Enviar", key="button9"):
+        if st.button("Enviar", key="button10"):
             if text4 != "":
-                proba = load_FNN.predict_text(text3)
+                proba = random_forr.predict_text(text4)
+                st.write(random_forr.predict(proba))    
+
+    st.write("### CNN")
+    with st.spinner("Loading table"):
+        st.dataframe(fifth_table2, hide_index=True, use_container_width=True)
+        text5 = st.text_input(
+            "Input text to clasify with CNN",
+            label_visibility="visible",
+            placeholder="Input texto to clasify ",
+            key="input9",
+        )
+        if st.button("Enviar", key="button8"):
+            if text5 != "":
+                proba = load_CNN.predict_text(text5)
+                st.write(load_CNN.predict(proba))
+    st.write("### FNN")
+    with st.spinner("Loading table"):
+        st.dataframe(sixth_table2, hide_index=True, use_container_width=True)
+        text6 = st.text_input(
+            "Input text to clasify with FNN",
+            label_visibility="visible",
+            placeholder="Input texto to clasify ",
+            key="input10",
+        )
+        if st.button("Enviar", key="button9"):
+            if text6 != "":
+                proba = load_FNN.predict_text(text6)
                 st.write(load_FNN.predict(proba))
 else :
     st.write("# AMLO CLASIFIER")
