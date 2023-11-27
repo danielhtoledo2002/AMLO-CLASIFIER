@@ -12,7 +12,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.schema.messages import HumanMessage, SystemMessage
 
 from Models2 import tesne, logistic, svg, cosine_large, svg2
-from DeepLearningModels import load_CNN, load_FNN
+from DeepLearningModels import load_CNN15k
 
 
 
@@ -37,6 +37,13 @@ with st.sidebar:
             default=["Clasificación", "Precision"],
         )
         third_table3 = svg2.clasification_rep()[selected]
+
+        selected = st.multiselect(
+            "Columns CNN 2",
+            load_CNN15k.clasification_rep().columns,
+            default=["Clasificación", "Precision"],
+        )
+        fourth_table3 = load_CNN15k.clasification_rep()[selected]
 
 
 
@@ -71,4 +78,18 @@ if select_clas == "Chat gpt 15k:computer:":
             if text2 != "":
                 proba = svg2.predict_text(text2)
                 st.write(svg2.predict(proba))
+    
+    st.write("### CNN with 15k")
+    with st.spinner("Loading table"):
+        st.dataframe(fourth_table3, hide_index=True, use_container_width=True)
+        text3 = st.text_input(
+            "Input text to clasify with CNN 2",
+            label_visibility="visible",
+            placeholder="Input texto to clasify ",
+            key="input88",
+        )
+        if st.button("Enviar", key="button88"):
+            if text3 != "":
+                proba = load_CNN15k.predict_text(text3)
+                st.write(load_CNN15k.predict(proba))
 
