@@ -17,7 +17,7 @@ nlp = spacy.load("es_core_news_lg")
 stopword_es = stopwords.words("spanish")
 
 new_model = keras.models.load_model('DeepLearningModels/CNN_model15K.h5')
-scaler = joblib.load('DeepLearningModels/scaler_CNN15K.save')
+scaler = joblib.load('DeepLearningModels/scaler_CNN15k.save')
 clasification = pd.read_csv("score_DLModels/CNN_data15k.csv")
 
 def vectorize(text):
